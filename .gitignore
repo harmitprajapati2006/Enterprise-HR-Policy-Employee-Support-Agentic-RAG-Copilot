@@ -10,9 +10,7 @@ ENV/
 .env.*.local
 *.env
 
-# Notebook files
-*.ipynb
-Agentic_RAG.ipynb
+# Notebook checkpoints
 .ipynb_checkpoints/
 
 # Python Bytecode and Cache
@@ -34,9 +32,15 @@ Desktop.ini
 $RECYCLE.BIN/
 .DS_Store
 
-# Logs
+# Logs & Audit DBs
 *.log
+*.sqlite3
+*.db
+audit.json
+
+# Uploads directory contents except gitkeep
+uploads/*
+!uploads/.gitkeep
 
 # Scratch and test files
 scratch_*.py
-test_*.py

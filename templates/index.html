@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ project_name }}</title>
+    <!-- Modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="dark-theme">
+    <div class="app-container">
+        <!-- Top Navigation Bar -->
+        <header class="top-nav">
+            <div class="brand-section">
+                <div class="brand-logo">
+                    <i data-lucide="shield-check"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>Enterprise HR Copilot</h1>
+                    <span class="subtext">Forward Deployed Engineer (FDE) Agentic RAG</span>
+                </div>
+                <div class="status-indicator">
+                    <span class="pulse-dot"></span>
+                    <span class="status-text">Pinecone Active</span>
+                </div>
+            </div>
+
+            <div class="nav-metrics">
+                <div class="metric-pill">
+                    <i data-lucide="cpu"></i>
+                    <span>{{ groq_model }}</span>
+                </div>
+                <div class="metric-pill">
+                    <i data-lucide="database"></i>
+                    <span>{{ pinecone_index }}</span>
+                </div>
+                <button class="action-btn secondary" id="btnOpenUpload">
+                    <i data-lucide="upload-cloud"></i>
+                    <span>Ingest Policy</span>
+                </button>
+                <button class="action-btn secondary" id="btnOpenAudit">
+                    <i data-lucide="activity"></i>
+                    <span>Audit Logs</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main 3-Column Layout -->
+        <main class="dashboard-grid">
+            <!-- Left Sidebar: HR Knowledge Base & Preset Prompts -->
+            <aside class="sidebar-left">
+                <div class="sidebar-card">
+                    <div class="card-header">
+                        <i data-lucide="sparkles"></i>
+                        <h3>Common HR Inquiries</h3>
+                    </div>
+                    <div class="preset-queries" id="presetQueries">
+                        <button class="preset-btn" data-query="How many paid annual leave days do I get and what are the carry-over rules?">
+                            <span class="category-tag leave">Leaves</span>
+                            <span class="query-text">Annual leave days & carry-over rules</span>
+                        </button>
+                        <button class="preset-btn" data-query="What is the policy on home office equipment stipend and monthly internet allowance?">
+                            <span class="category-tag remote">Remote Work</span>
+                            <span class="query-text">Home office stipend & internet allowance</span>
+                        </button>
+                        <button class="preset-btn" data-query="What is the maternity and paternity leave entitlement for new parents?">
+                            <span class="category-tag benefits">Parental</span>
+                            <span class="query-text">Maternity & paternity leave duration</span>
+                        </button>
+                        <button class="preset-btn" data-query="What is the maximum group health insurance coverage and what does it include?">
+                            <span class="category-tag benefits">Insurance</span>
+                            <span class="query-text">Group health insurance coverage sum</span>
+                        </button>
+                        <button class="preset-btn" data-query="What is the required notice period for resigning and what is the asset return process?">
+                            <span class="category-tag exit">Offboarding</span>
+                            <span class="query-text">Notice period & asset return SOP</span>
+                        </button>
+                        <button class="preset-btn" data-query="Who can I contact in case of an acute after-hours emergency?">
+                            <span class="category-tag emergency">Support</span>
+                            <span class="query-text">Emergency contacts & response SLAs</span>
+                        </button>
+                        <button class="preset-btn" data-query="Can you summarize current 2026 tech sector hiring and compensation trends?">
+                            <span class="category-tag web">Web Fallback</span>
+                            <span class="query-text">External market salary trends (Web Search)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sidebar-card doc-explorer">
+                    <div class="card-header">
+                        <i data-lucide="folder-kanban"></i>
+                        <h3>Verified HR Policy Docs</h3>
+                    </div>
+                    <div class="doc-list" id="docList">
+                        <div class="loading-docs"><i data-lucide="loader" class="spin"></i> Loading knowledge base...</div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center Panel: Chat Stream & Interactive Agent Workspace -->
+            <section class="chat-workspace">
+                <div class="chat-history" id="chatHistory">
+                    <!-- Welcome Initial Message -->
+                    <div class="message-card assistant welcome-card">
+                        <div class="avatar-col">
+                            <div class="agent-avatar">
+                                <i data-lucide="bot"></i>
+                            </div>
+                        </div>
+                        <div class="content-col">
+                            <div class="author-row">
+                                <span class="author-name">Enterprise HR Copilot</span>
+                                <span class="badge route-badge private">Agentic RAG Ready</span>
+                                <span class="timestamp">Just now</span>
+                            </div>
+                            <div class="message-body">
+                                <p>Welcome! I am your <strong>Enterprise HR Policy & Employee Support Copilot</strong>, powered by LangGraph, Pinecone vector search, and Tavily web fallback.</p>
+                                <p>Ask me anything regarding:</p>
+                                <div class="welcome-features">
+                                    <span class="feat-chip"><i data-lucide="calendar"></i> Paid Time-Off & Leaves</span>
+                                    <span class="feat-chip"><i data-lucide="home"></i> Hybrid & Remote Work</span>
+                                    <span class="feat-chip"><i data-lucide="heart"></i> Health & Wellness Benefits</span>
+                                    <span class="feat-chip"><i data-lucide="dollar-sign"></i> Payroll & Reimbursements</span>
+                                    <span class="feat-chip"><i data-lucide="user-plus"></i> Onboarding & Offboarding</span>
+                                    <span class="feat-chip"><i data-lucide="shield-alert"></i> Ethics & Code of Conduct</span>
+                                </div>
+                                <p class="subtext">Select a prompt from the left or type your query below to observe real-time agentic routing, grading, and document citation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Input Box -->
+                <div class="chat-input-container">
+                    <form id="chatForm" class="chat-form">
+                        <div class="input-wrapper">
+                            <textarea
+                                id="queryInput"
+                                rows="1"
+                                placeholder="Ask an HR policy, leave, benefit, or workplace question (e.g. 'Can I carry forward unused annual leaves?')..."
+                                required
+                            ></textarea>
+                            <button type="submit" id="sendBtn" class="send-btn" title="Send Query">
+                                <i data-lucide="send"></i>
+                            </button>
+                        </div>
+                        <div class="input-footer">
+                            <span class="helper-text"><i data-lucide="lock"></i> Private HR queries evaluated against corporate Pinecone vector store with zero hallucinations.</span>
+                            <span class="shortcut-hint">Press <strong>Enter</strong> to send, <strong>Shift + Enter</strong> for new line</span>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Right Panel: Real-time Workflow Execution & Trace Map -->
+            <aside class="sidebar-right">
+                <div class="sidebar-card workflow-card">
+                    <div class="card-header">
+                        <i data-lucide="git-commit"></i>
+                        <h3>Live Agentic Graph Flow</h3>
+                    </div>
+                    <div class="agent-graph-visualizer">
+                        <div class="graph-node" id="node-router">
+                            <div class="node-icon"><i data-lucide="compass"></i></div>
+                            <div class="node-info">
+                                <span class="node-title">1. Query Router</span>
+                                <span class="node-state">Idle</span>
+                            </div>
+                        </div>
+                        <div class="connector-line"></div>
+                        <div class="graph-node" id="node-retrieve">
+                            <div class="node-icon"><i data-lucide="database"></i></div>
+                            <div class="node-info">
+                                <span class="node-title">2. Private KB Retrieve</span>
+                                <span class="node-state">Idle</span>
+                            </div>
+                        </div>
+                        <div class="connector-line"></div>
+                        <div class="graph-node" id="node-grade-kb">
+                            <div class="node-icon"><i data-lucide="check-circle-2"></i></div>
+                            <div class="node-info">
+                                <span class="node-title">3. Grade KB Evidence</span>
+                                <span class="node-state">Idle</span>
+                            </div>
+                        </div>
+                        <div class="connector-line branch"></div>
+                        <div class="graph-node fallback" id="node-web-search">
+                            <div class="node-icon"><i data-lucide="globe"></i></div>
+                            <div class="node-info">
+                                <span class="node-title">4. Web Fallback (Tavily)</span>
+                                <span class="node-state">Standby</span>
+                            </div>
+                        </div>
+                        <div class="connector-line"></div>
+                        <div class="graph-node" id="node-generate">
+                            <div class="node-icon"><i data-lucide="pen-tool"></i></div>
+                            <div class="node-info">
+                                <span class="node-title">5. Grounded Generation</span>
+                                <span class="node-state">Idle</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Trace Log Feed -->
+                <div class="sidebar-card trace-feed-card">
+                    <div class="card-header">
+                        <i data-lucide="terminal"></i>
+                        <h3>Agent Execution Trace</h3>
+                    </div>
+                    <div class="trace-feed" id="traceFeed">
+                        <div class="empty-trace">Execution path steps and grading metrics will display dynamically here when a query is processed.</div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Upload Document Modal -->
+    <div class="modal-backdrop" id="uploadModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i data-lucide="file-up"></i>
+                    <h2>Ingest HR Document into Pinecone</h2>
+                </div>
+                <button class="close-modal-btn" id="btnCloseUpload"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc">Upload corporate HR manuals, leave updates, or employee memos (.pdf, .md, .txt, .docx). Documents are automatically split and embedded into the Pinecone vector index.</p>
+                <div class="drop-zone" id="dropZone">
+                    <i data-lucide="upload" class="drop-icon"></i>
+                    <p class="drop-text">Drag & drop policy files here, or <span>Browse Files</span></p>
+                    <input type="file" id="fileInput" accept=".pdf,.txt,.md,.markdown,.docx" style="display: none;">
+                </div>
+                <div class="selected-file-info" id="fileInfo" style="display: none;">
+                    <i data-lucide="file-text"></i>
+                    <span id="selectedFileName">document.pdf</span>
+                    <button type="button" id="clearFileBtn" class="clear-btn"><i data-lucide="trash-2"></i></button>
+                </div>
+                <div id="uploadProgress" class="upload-progress" style="display: none;">
+                    <div class="spinner"><i data-lucide="loader" class="spin"></i></div>
+                    <span id="uploadStatusText">Ingesting and embedding into Pinecone...</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="action-btn secondary" id="btnCancelUpload">Cancel</button>
+                <button class="action-btn primary" id="btnSubmitUpload" disabled>
+                    <i data-lucide="arrow-up-circle"></i>
+                    <span>Index into Vector Store</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audit Logs Modal -->
+    <div class="modal-backdrop" id="auditModal">
+        <div class="modal-card large">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i data-lucide="shield-alert"></i>
+                    <h2>Enterprise Agentic Audit Trail</h2>
+                </div>
+                <button class="close-modal-btn" id="btnCloseAudit"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="audit-metrics-row" id="auditMetricsRow">
+                    <div class="stat-box">
+                        <span class="stat-num" id="statTotalQueries">0</span>
+                        <span class="stat-label">Total Inquiries</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-num" id="statKbRate">0%</span>
+                        <span class="stat-label">Internal KB Resolution</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-num" id="statWebCount">0</span>
+                        <span class="stat-label">Web Fallback Queries</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-num" id="statDirectCount">0</span>
+                        <span class="stat-label">Direct Pleasantries</span>
+                    </div>
+                </div>
+
+                <div class="audit-table-wrapper">
+                    <table class="audit-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Question</th>
+                                <th>Source Route</th>
+                                <th>KB Grade</th>
+                                <th>Retries</th>
+                            </tr>
+                        </thead>
+                        <tbody id="auditTableBody">
+                            <tr>
+                                <td colspan="5" class="loading-row">Fetching audit records...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -14,6 +14,10 @@ if "%~1"=="1" (
     "%~dp0venv\Scripts\python.exe" "%~dp0part6_helper_function.py" %2 %3 %4 %5 %6
 ) else if "%~1"=="7" (
     "%~dp0venv\Scripts\python.exe" "%~dp0part7_run_demos.py"
+) else if "%~1"=="ingest" (
+    "%~dp0venv\Scripts\python.exe" "%~dp0ingest_sample_kb.py"
+) else if "%~1"=="agent" (
+    "%~dp0venv\Scripts\python.exe" "%~dp0agentic_rag.py" %2 %3 %4 %5
 ) else (
-    "%~dp0venv\Scripts\python.exe" "%~dp0agentic_rag.py" %*
+    "%~dp0venv\Scripts\python.exe" "%~dp0run.py" %*
 )
