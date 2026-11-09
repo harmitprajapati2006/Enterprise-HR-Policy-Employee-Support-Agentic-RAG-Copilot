@@ -1,0 +1,42 @@
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# Environment and Secrets (CRITICAL: Do NOT make public)
+.env
+.env.local
+.env.*.local
+*.env
+
+# Notebook files
+*.ipynb
+Agentic_RAG.ipynb
+.ipynb_checkpoints/
+
+# Python Bytecode and Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# IDE & Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Logs
+*.log
+
+# Scratch and test files
+scratch_*.py
+test_*.py
