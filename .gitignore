@@ -38,9 +38,10 @@ $RECYCLE.BIN/
 *.db
 audit.json
 
-# Uploads directory contents except gitkeep
+# Uploads directory contents except gitkeep and reference sample PDF
 uploads/*
 !uploads/.gitkeep
+!uploads/novacore_company_information.pdf
 
 # Scratch and test files
 scratch_*.py

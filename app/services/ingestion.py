@@ -111,3 +111,12 @@ class DocumentIngestionService:
 
 ingestion_service = DocumentIngestionService()
 
+def load_file(file_path: Union[str, Path]) -> List[Document]:
+    """Top-level convenience function for document loading."""
+    return ingestion_service.load_file(file_path)
+
+def chunk_documents(documents: List[Document]) -> List[Document]:
+    """Top-level convenience function for chunking documents."""
+    return ingestion_service.split_documents(documents)
+
+

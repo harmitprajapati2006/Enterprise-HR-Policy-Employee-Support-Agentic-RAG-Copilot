@@ -44,7 +44,7 @@ class Settings(BaseSettings):
     # Directories
     DATA_DIR: Path = BASE_DIR / "data" / "sample_kb"
     UPLOADS_DIR: Path = BASE_DIR / "uploads"
-    AUDIT_DB_PATH: Path = BASE_DIR / "audit.sqlite3"
+    AUDIT_DB_PATH: Path = BASE_DIR / "data" / "audit.db"
 
     model_config = SettingsConfigDict(
         env_file=str(BASE_DIR / ".env"),
