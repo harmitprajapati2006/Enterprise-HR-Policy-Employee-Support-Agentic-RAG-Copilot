@@ -101,6 +101,9 @@ HR_AGENT/
 ├── run.bat                       # One-click Windows runner batch script
 ├── push.bat                      # Automated Git push script
 ├── run.ps1                       # PowerShell script runner
+├── Dockerfile                    # Containerization specification for production
+├── docker-compose.yml            # Multi-container orchestration definition
+├── .dockerignore                 # Excluded files for container builds
 ├── requirements.txt              # Production dependency specifications
 ├── .env.example                  # Environment variable configuration template
 └── README.md                     # Comprehensive documentation
@@ -108,7 +111,36 @@ HR_AGENT/
 
 ---
 
-## 🚀 Quickstart Guide
+## 🐳 Docker Deployment (Containerized)
+
+You can launch the entire Enterprise Copilot in a production Docker container with a single command:
+
+### Using Docker Compose (Recommended)
+```bash
+# 1. Ensure your .env file is populated with API keys
+# 2. Build and launch the container in the background
+docker compose up -d --build
+
+# 3. View live container logs
+docker compose logs -f
+
+# 4. Stop the container
+docker compose down
+```
+
+### Using Plain Docker CLI
+```bash
+# Build Docker image
+docker build -t enterprise-hr-copilot .
+
+# Run container mapped to port 8000 with .env configuration
+docker run -d --name hr-copilot -p 8000:8000 --env-file .env enterprise-hr-copilot
+```
+Access the application at [http://localhost:8000](http://localhost:8000).
+
+---
+
+## 🚀 Quickstart Guide (Local Python)
 
 ### 1. Clone the Repository
 ```bash
