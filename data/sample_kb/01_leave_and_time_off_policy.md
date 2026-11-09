@@ -46,3 +46,4 @@ This policy establishes the standard entitlements, approval workflows, and compl
 
 ## 4. Unpaid Leave and Loss of Pay (LOP)
 Any absence without approved leave balance or unauthorized absence exceeding 3 consecutive days will be marked as Loss of Pay (LOP) and may initiate disciplinary proceedings under the Attendance Code.
+

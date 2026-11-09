@@ -28,3 +28,4 @@
 ## 5. Official Company Holidays
 - The organization declares **11 statutory paid holidays** each year, published annually by People Operations on December 1.
 - In addition, employees receive **2 Floating/Optional Holidays** to celebrate personal cultural, religious, or civic occasions of their choosing.
+

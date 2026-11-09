@@ -28,3 +28,4 @@ The Enterprise complies with global privacy regulations (including GDPR, CCPA, a
 
 ## 5. Record Retention Period
 - Resigned or terminated employee files are archived securely for **7 years** following the date of separation to fulfill statutory tax, labor law, and pension auditing requirements, after which digital records are permanently wiped.
+

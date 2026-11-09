@@ -74,3 +74,4 @@ if __name__ == "__main__":
 
     custom_dir = Path(args.dir) if args.dir else settings.DATA_DIR
     ingest_knowledge_base(custom_dir)
+

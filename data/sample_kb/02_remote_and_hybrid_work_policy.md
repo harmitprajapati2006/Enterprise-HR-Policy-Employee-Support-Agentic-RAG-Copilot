@@ -37,3 +37,4 @@ The purpose of this policy is to outline expectations, eligibility, equipment pr
 ## 6. Work from Anywhere (Temporary International Remote Work)
 - Employees in good standing may request up to **20 working days per calendar year** to work remotely from an approved international jurisdiction.
 - The request must be logged 30 days in advance via HR Desk to review tax residency, cybersecurity compliance, and legal restrictions.
+

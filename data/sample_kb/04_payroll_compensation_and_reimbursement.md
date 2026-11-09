@@ -28,3 +28,4 @@ Employees incurring legitimate business expenses during corporate travel, client
 ## 4. Salary Advance & Emergency Hardship Assistance
 - Employees who have completed at least 6 months of continuous service can apply for an emergency salary advance equal to up to **1 month of base salary** in verified family or medical distress.
 - Recovered across equal installments over a maximum repayment duration of 6 months, interest-free.
+

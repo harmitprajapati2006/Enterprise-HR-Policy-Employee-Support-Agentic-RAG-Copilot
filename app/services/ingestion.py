@@ -110,3 +110,4 @@ class DocumentIngestionService:
 
 
 ingestion_service = DocumentIngestionService()
+

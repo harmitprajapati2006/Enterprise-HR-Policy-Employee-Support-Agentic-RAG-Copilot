@@ -27,3 +27,4 @@
 
 ## 5. Annual Preventive Health Check-Up
 - Employees aged 30 and older are entitled to one complimentary full-body executive preventive health screening each calendar year at an empanelled diagnostics laboratory.
+

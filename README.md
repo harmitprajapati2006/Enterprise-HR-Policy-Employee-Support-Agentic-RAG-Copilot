@@ -196,3 +196,4 @@ curl -X POST "http://localhost:8000/api/chat" \
 ## 👤 Author
 Developed with ❤️ by **Harmit Prajapati**  
 GitHub: [@harmitprajapati2006](https://github.com/harmitprajapati2006)
+

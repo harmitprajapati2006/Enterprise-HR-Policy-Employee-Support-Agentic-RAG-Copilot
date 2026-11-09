@@ -57,3 +57,4 @@ settings = Settings()
 # Ensure necessary directories exist
 settings.DATA_DIR.mkdir(parents=True, exist_ok=True)
 settings.UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
+

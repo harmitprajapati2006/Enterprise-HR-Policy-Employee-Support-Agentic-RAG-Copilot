@@ -55,3 +55,4 @@ class AgentState(TypedDict):
     retry_count: int
     citations: List[Citation]
     trace: List[TraceStep]
+

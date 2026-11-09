@@ -194,3 +194,4 @@ async def list_documents():
         "uploaded_count": len(uploaded_docs),
         "documents": sample_docs + uploaded_docs,
     }
+

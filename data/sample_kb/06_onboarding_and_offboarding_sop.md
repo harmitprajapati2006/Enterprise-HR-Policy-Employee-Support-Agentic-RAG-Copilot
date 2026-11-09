@@ -42,3 +42,4 @@
 ### 2.4 Final Settlement & Relieving Documentation
 - Full and Final Settlement (FNF) comprising unpaid salary, accrued leave encashment, and deductions is processed within **30 business days** of the last working day.
 - Relieving Letter and Experience Certificate are emailed automatically upon FNF clearance.
+
